@@ -13,7 +13,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
-    value     = aws_iam_instance_profile.ec2_eb_profile.name
+    value     = "aws-elasticbeanstalk-ec2-role"
   }
   setting {
     name      = "AssociatePublicIpAddress"

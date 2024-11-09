@@ -43,7 +43,7 @@ resource "aws_elasticache_cluster" "vprofile-cache" {
 
 }
 resource "aws_mq_broker" "vprofile-rmq" {
-  broker_name        = "vprofile-rmq"
+  broker_name        = "My-vprofile-rmq"
   engine_type        = "ActiveMQ"
   engine_version     = "5.15.0"
   host_instance_type = "mq.t2.micro"

@@ -51,7 +51,8 @@ resource "aws_mq_broker" "vprofile-rmq" {
   subnet_ids         = [module.vpc.private_subnets[0]]
 
   user {
-    password = var.rmquser
-    username = var.rmqpass
+
+    username = var.rmquser
+    password = var.rmqpass
   }
 }

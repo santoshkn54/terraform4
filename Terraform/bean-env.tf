@@ -110,7 +110,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
     value     = "Rolling"
   }
   setting {
-    name      = "SecurityGroup"
+    name      = "SecurityGroups"
     namespace = "aws:autoscaling:launchconfiguration"
     value     = aws_security_group.vprofile-prod-sg.id
   }

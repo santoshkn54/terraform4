@@ -9,10 +9,11 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
     namespace = "aws:ec2:vpc"
     value     = module.vpc.vpc_id
   }
+
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "IamInstanceProfile"
-    value     = "arn:aws:iam::545009825113:instance-profile/IamInstanceProfile"
+    value     = aws_iam_instance_profile.ec2_eb_profile.name
   }
   setting {
     name      = "AssociatePublicIpAddress"

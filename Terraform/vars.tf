@@ -26,7 +26,7 @@ variable "rmquser" {
   default = "rabbit"
 }
 variable "rmqpass" {
-  default = "Cool@9366"
+  default = "Gr33n@pple123456"
 }
 variable "dbname" {
   default = "accounts"

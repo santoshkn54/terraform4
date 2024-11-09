@@ -57,11 +57,7 @@ resource "aws_mq_broker" "vprofile-rmq" {
   }
 }
 # Create instance profile
-resource "aws_iam_instance_profile" "ec2_eb_profile" {
-  name = "event-driven-ec2-profile"
-  role = aws_iam_role.ec2_role.name
-  tags = local.tags
-}
+
 
 resource "aws_iam_role" "ec2_role" {
   name               = "event-driven-ec2-role"
@@ -77,5 +73,10 @@ resource "aws_iam_role" "ec2_role" {
     name   = "eb-application-permissions"
     policy = data.aws_iam_policy_document.permissions.json
   }
+  tags = local.tags
+}
+resource "aws_iam_instance_profile" "ec2_eb_profile" {
+  name = "event-driven-ec2-profile"
+  role = aws_iam_role.ec2_role.name
   tags = local.tags
 }

@@ -19,7 +19,7 @@ resource "aws_db_instance" "vprofile-rds" {
   storage_type           = "gp2"
   engine                 = "mysql"
   engine_version         = "5.6.34"
-  db_name                   = var.dbname
+  db_name                = var.dbname
   username               = var.dbuser
   password               = var.dbpass
   parameter_group_name   = "default.mysql5.6"
@@ -35,7 +35,7 @@ resource "aws_elasticache_cluster" "vprofile-cache" {
   cluster_id           = "vprofile-cache"
   engine               = "memcached"
   node_type            = "cache.t2.micro"
-  num_cache_nodes     = 1
+  num_cache_nodes      = 1
   parameter_group_name = "default.memcached1.5"
   port                 = 11211
   security_group_ids   = [aws_security_group.vprofile-backend-sg.id]

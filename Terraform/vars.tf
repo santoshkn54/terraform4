@@ -4,9 +4,9 @@ variable "AWS_REGION" {
 variable "AMIS" {
   type = map(any)
   default = {
-    us-east-1  = "ami-005fc0f236362e99f"
-    us-east-2  = "ami-005fc0f236362e99f"
-    ap-south-1 = "ami-005fc0f236362e99f"
+    us-east-1  = "ami-00eb69d236edcfaf8"
+    us-east-2  = "ami-00eb69d236edcfaf8"
+    ap-south-1 = "ami-00eb69d236edcfaf8"
   }
 }
 variable "PRIV_KEY_PATH" {

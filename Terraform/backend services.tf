@@ -16,7 +16,7 @@ resource "aws_db_instance" "vprofile-rds" {
   allocated_storage      = 20
   storage_type           = "gp2"
   engine                 = "mysql"
-  engine_version         = "5.7.40"
+  engine_version         = "5.7"
   db_name                = var.dbname
   username               = var.dbuser
   password               = var.dbpass
@@ -46,7 +46,7 @@ resource "aws_mq_broker" "vprofile-rmq" {
   engine_version     = "5.16.7"
   host_instance_type = "mq.t2.micro"
   security_groups    = [aws_security_group.vprofile-backend-sg.id]
-  subnet_ids         = [module.vpc.private_subnets[0]]
+  subnet_ids         = [module.vpc.private_subnets[0],module.vpc.private_subnets[1]]
   deployment_mode        = "ACTIVE_STANDBY_MULTI_AZ"
 
   user {
@@ -59,7 +59,7 @@ resource "aws_mq_broker" "vprofile-rmq" {
 }
 resource "aws_launch_template" "launchtemplate" {
   name          = "example-launch-template"
-  image_id      = "ami-005fc0f236362e99f"  # Replace with your AMI ID
+  image_id      = "ami-00eb69d236edcfaf8"  # Replace with your AMI ID
   instance_type = "t2.micro"
 
   # Optional: Other settings like security groups, IAM roles, etc.

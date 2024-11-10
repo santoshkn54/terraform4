@@ -56,6 +56,27 @@ resource "aws_mq_broker" "vprofile-rmq" {
     password = var.rmqpass
   }
 }
-# Create instance profile
+resource "aws_launch_template" "launchtemplate" {
+  name          = "example-launch-template"
+  image_id      = "ami-005fc0f236362e99f"  # Replace with your AMI ID
+  instance_type = "t2.micro"
+
+  # Optional: Other settings like security groups, IAM roles, etc.
+  key_name = aws_key_pair.vprofilekey.key_name
+}
+
+# Define your Auto Scaling Group using Launch Template
+resource "aws_autoscaling_group" "autoscalinglaunchtemplate" {
+  desired_capacity     = 2
+  min_size             = 1
+  max_size             = 3
+  vpc_zone_identifier  = [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]]  # Replace with your subnets
+  launch_template {
+    id      = aws_launch_template.example.id
+    version = "$Latest"
+  }
+
+  # Optional: Other settings like load balancer, health checks, etc.
+}
 
 

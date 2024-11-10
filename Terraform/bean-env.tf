@@ -3,6 +3,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   application         = aws_elastic_beanstalk_application.vprofile-prod.name
   solution_stack_name = "64bit Amazon Linux 2 v4.7.3 running Tomcat 9 Corretto 8"
   cname_prefix        = "vprofile-bean-prod-domainsantoshkn54"
+
   setting {
     name      = "VPCId"
     namespace = "aws:ec2:vpc"
@@ -33,7 +34,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "InstanceType"
-    value     = "t2.micro"
+    value     = aws_launch_template.launchtemplate.id
   }
 
   setting {

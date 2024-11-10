@@ -53,6 +53,10 @@ resource "aws_mq_broker" "vprofile-rmq" {
     username = var.rmquser
     password = var.rmqpass
   }
+  replication {
+    replica_regions = ["us-west-2"]  # Ensure these regions exist and are valid
+  }
+
 }
 resource "aws_launch_template" "launchtemplate" {
   name          = "example-launch-template"

@@ -32,7 +32,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   }
 
   setting {
-    namespace = "aws:autoscaling:launchconfiguration"
+    namespace = "aws:ec2:instances"
     name      = "InstanceTypes"
     value     = "t2.micro"
   }

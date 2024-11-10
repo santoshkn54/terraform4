@@ -47,7 +47,7 @@ resource "aws_mq_broker" "vprofile-rmq" {
   host_instance_type = "mq.t2.micro"
   security_groups    = [aws_security_group.vprofile-backend-sg.id]
   subnet_ids         = [module.vpc.private_subnets[0],module.vpc.private_subnets[1]]
-  deployment_mode        = "ACTIVE_STANDBY_MULTI_AZ"
+  deployment_mode        = "SINGLE_INSTANCE"
 
   user {
 

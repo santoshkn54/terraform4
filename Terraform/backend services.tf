@@ -47,15 +47,14 @@ resource "aws_mq_broker" "vprofile-rmq" {
   host_instance_type = "mq.t2.micro"
   security_groups    = [aws_security_group.vprofile-backend-sg.id]
   subnet_ids         = [module.vpc.private_subnets[0]]
+  deployment_mode        = "ACTIVE_STANDBY_MULTI_AZ"
 
   user {
 
     username = var.rmquser
     password = var.rmqpass
   }
-  replication {
-    replica_regions = ["us-west-2"]  # Ensure these regions exist and are valid
-  }
+
 
 }
 resource "aws_launch_template" "launchtemplate" {

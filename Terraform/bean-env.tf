@@ -34,7 +34,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "InstanceType"
-    value     = aws_launch_template.launchtemplate.id
+    value     = aws_launch_template.launchtemplate.instance_type
   }
 
   setting {

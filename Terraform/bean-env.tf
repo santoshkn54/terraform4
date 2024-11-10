@@ -46,7 +46,7 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   setting {
     namespace = "aws:autoscaling:asg"
     name      = "Availability Zones"
-    value     = "Any 3"
+    value     = aws_autoscaling_group.autoscalinglaunchtemplate.vpc_zone_identifier
   }
   setting {
     namespace = "aws:autoscaling:asg"

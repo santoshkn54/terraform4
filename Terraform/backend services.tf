@@ -72,7 +72,7 @@ resource "aws_autoscaling_group" "autoscalinglaunchtemplate" {
   max_size             = 3
   vpc_zone_identifier  = [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]]  # Replace with your subnets
   launch_template {
-    id      = aws_launch_template.example.id
+    id      = aws_launch_template.launchtemplate.id
     version = "$Latest"
   }
 
